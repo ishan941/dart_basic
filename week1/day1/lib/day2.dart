@@ -1,7 +1,6 @@
 import 'dart:io';
 
 void student() {
-  // print("Enter your name: ");
   stdout.write("Enter you name: ");
   var name = stdin.readLineSync();
   print(name);
