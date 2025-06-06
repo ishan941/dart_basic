@@ -2,6 +2,7 @@
 //git setup
 //flutter sdk setup
 import 'package:main/day2.dart';
+import 'package:main/grade_system.dart';
 import 'package:main/if_else.dart';
 
 void main() {
@@ -40,5 +41,9 @@ void main() {
 //   print("(Sum = $sum * Mul = $mul) / $divnum");
 
   // votingSytem();
-  gradeSystem();
+  // gradeSystem();
+  // gradeSystem();
+  gs();
+  final today = DateTime.now();
+  print(today);
 }

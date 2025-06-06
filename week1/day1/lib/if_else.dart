@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 votingSytem() {
@@ -17,6 +18,21 @@ votingSytem() {
 }
 
 gradeSystem() {
+  stdout.write("Enter you name");
+  String name = stdin.readLineSync()!;
+
+  stdout.write("Enter you age");
+  int age = int.parse(stdin.readLineSync()!);
+
+  stdout.write("Enter you grade");
+  var grade = stdin.readLineSync();
+
+  Map<String, dynamic> jsonList = {
+    "name": name,
+    "age": age,
+    "grade": grade,
+  };
+  print(jsonList);
   stdout.write("Please Enter you grade: ");
   double marks = double.parse(stdin.readLineSync()!);
   String gpa = "";
@@ -45,8 +61,10 @@ gradeSystem() {
     default:
       print("Invalid Grade");
   }
-  List<dynamic> dy = [1, "Venus", "Earth", "Mars"];
-  List<int> inta = [1, 1, 3, 4];
-  List he = [1, 1, 1.1];
-  List a = [1, " as", 1.1];
+
+  Map<String, dynamic> student = {};
+
+  // Map<String, dynamic> grade = {};
+
+  print(student);
 }
