@@ -16,7 +16,7 @@ variab() {
 
   // Faculty
   stdout.write("Enter the name of the faculty: ");
-  String faculty = stdin.readLineSync() ?? "";
+  String? faculty = stdin.readLineSync();
 
 //List
   List<dynamic> inList = [name, age, grade, faculty];

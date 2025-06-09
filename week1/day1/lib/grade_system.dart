@@ -53,6 +53,18 @@ gs() {
     default:
       print("Invalid GPA.");
   }
+
+  //Ternary operator
+  gpa == "A+" ? print("You got selected") : print("You are not selected");
+  // single (=) lay value asign garxa
+  //double ( == )lay compare garxa
+  //
+  // gpa ma vako value lay compare garxa
+  //yeti gpa A+ ho vane "You got selected"
+  // first koi linxa
+  //hoina vane "You are not selected"
+  //paxadi ko linxa
+
   //key value pair
   //javascript object notation
   //key must have unique value

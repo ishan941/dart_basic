@@ -1,22 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
 
-votingSytem() {
-  stdout.write("Please Enter you name: ");
-  String name = stdin.readLineSync()!;
-
-  stdout.write("Please Enter you age: ");
-  int age = int.parse(stdin.readLineSync()!);
-  int illigableAge = 18;
-
-  if (age <= illigableAge) {
-    print(
-        "$name You age is $age, you can't vote. You can vote after ${illigableAge - age} year");
-  } else {
-    print("$name your age is $age, You can vote");
-  }
-}
-
 gradeSystem() {
   stdout.write("Enter you name");
   String name = stdin.readLineSync()!;
@@ -62,9 +46,9 @@ gradeSystem() {
       print("Invalid Grade");
   }
 
-  Map<String, dynamic> student = {};
-
-  // Map<String, dynamic> grade = {};
-
-  print(student);
+  Map<String, dynamic> studentGrade = {
+    "Gpa": gpa,
+    "Marks": marks,
+    "grade": grade,
+  };
 }

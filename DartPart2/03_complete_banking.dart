@@ -13,7 +13,7 @@ class BankAccount {
 
   final Map<String, BankAccount> accounts = {};
 
-  void main() {
+  choose() {
     print("🏦 Welcome to Dart Bank System");
 
     while (true) {
