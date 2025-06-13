@@ -5,6 +5,7 @@
 import 'dart:io';
 
 import 'package:main/class_obj1.dart';
+import 'package:main/proper_bank.dart';
 import 'package:main/voting_system.dart';
 
 void main() {
@@ -51,8 +52,9 @@ void main() {
   // BankingSystem bankingSystem = BankingSystem();
   // bankingSystem.openBank();
   // votingSytem();
-  String? call = stdin.readLineSync();
-  Car car = Car(brand: call, year: call);
+  // String? call = stdin.readLineSync();
+  // Car car = Car(brand: call, year: call);
 
-  print("${car.brand}, ${car.year}");
+  // print("${car.brand}, ${car.year}");
+  banking();
 }
