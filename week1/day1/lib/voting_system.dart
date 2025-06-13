@@ -1,5 +1,13 @@
 import 'dart:io';
 
+void main() {
+  votingSytem();
+}
+
+isab() {
+  print("Hello");
+}
+
 votingSytem() {
   //
   Map<String, int> voteCounts = {
@@ -10,10 +18,10 @@ votingSytem() {
   // First ma chai a b ra c ko vote 0 rakhdeko
 
   const int eligibleAge = 18;
-  bool continueVoting = true;
+  bool a = true;
 
   // while loop ma first ma true lagauxau repeat garna ko lagi if yes .
-  while (continueVoting) {
+  while (a) {
     stdout.write("👤 Enter your name: ");
     String name = stdin.readLineSync()!;
 
@@ -23,7 +31,7 @@ votingSytem() {
     if (age < eligibleAge) {
       print("❌ Sorry $name, you're not eligible to vote.");
     } else {
-      print("🗳️ Candidates: Alice, Bob, Charlie");
+      print("🗳️ Candidates: A, B, C");
       stdout.write("👉 Enter the name of the candidate you want to vote for: ");
       String vote = stdin.readLineSync()!;
 
@@ -46,14 +54,14 @@ votingSytem() {
       }
     }
 
-    stdout.write("\nDo you want to continue voting? (yes/no): ");
+    stdout.write("\nDo you want to continue voting? (y/n): ");
     String again = stdin.readLineSync()!.toLowerCase();
-    if (again == 'y') {
+    if (again == 'y' || again == 'yes') {
       //y lekhyo vane while loop feri continue hunxa
-      continueVoting = true;
-    } else if (again == 'n') {
+      a = true;
+    } else if (again == 'n' || again == 'no') {
       //n lekhyo vane while loop  terminate hunxa
-      continueVoting = false;
+      a = false;
     }
   }
 
