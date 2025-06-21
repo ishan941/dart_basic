@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 class BankingSystem {
@@ -33,14 +34,34 @@ class BankingSystem {
     print("💰 Current Balance: Rs $balance");
   }
 
+  Map<String, dynamic> toJson() {
+    return {
+      'name': name,
+      'accountNumber': accountNumber,
+      'balance': balance,
+    };
+  }
+
+  factory BankingSystem.fromJson(Map<String, dynamic> json) {
+    return BankingSystem(
+      name: json['name'],
+      accountNumber: json['accountNumber'],
+      balance: (json['balance'] ?? 0).toDouble(),
+    );
+  }
+
   @override
   String toString() {
     return 'Account Holder: $name\nAccount Number: $accountNumber\nBalance: Rs $balance';
   }
 }
 
+void main() {
+  banking();
+}
+
 void banking() {
-  final Map<String, BankingSystem> accounts = {};
+  Map<String, BankingSystem> accounts = loadAccountsFromFile();
 
   print("🏠 Welcome to Dart Bank!");
 
@@ -56,11 +77,14 @@ void banking() {
     switch (choice) {
       case 1:
         createAccount(accounts);
+        saveAccountsToFile(accounts);
         break;
       case 2:
         loginAccount(accounts);
+        saveAccountsToFile(accounts); // in case balance changes
         break;
       case 3:
+        saveAccountsToFile(accounts);
         print("🙏 Thank you for using Dart Bank!");
         return;
       default:
@@ -101,9 +125,10 @@ void loginAccount(Map<String, BankingSystem> accounts) {
   BankingSystem currentAccount = accounts[accNum]!;
 
   while (true) {
-    print("Hello, ${currentAccount.name}welcome to dart bank");
-    print("Account number: ${currentAccount.accountNumber}");
-    print("Balance: ${currentAccount.balance}");
+    print("\nHello, ${currentAccount.name}! Welcome to Dart Bank");
+    print("Account Number: ${currentAccount.accountNumber}");
+    print("Balance: Rs ${currentAccount.balance}");
+
     print("\n===== ACCOUNT MENU =====");
     print("1. Deposit Money");
     print("2. Withdraw Money");
@@ -116,9 +141,11 @@ void loginAccount(Map<String, BankingSystem> accounts) {
     switch (option) {
       case 1:
         currentAccount.depositMoney();
+        saveAccountsToFile(accounts); // Save after deposit
         break;
       case 2:
         currentAccount.withdrawMoney();
+        saveAccountsToFile(accounts); // Save after withdrawal
         break;
       case 3:
         currentAccount.checkBalance();
@@ -130,4 +157,21 @@ void loginAccount(Map<String, BankingSystem> accounts) {
         print("❌ Invalid choice.");
     }
   }
+}
+
+void saveAccountsToFile(Map<String, BankingSystem> accounts) {
+  final file = File('accounts.json');
+  final jsonData = accounts.map((key, value) => MapEntry(key, value.toJson()));
+  file.writeAsStringSync(jsonEncode(jsonData));
+}
+
+Map<String, BankingSystem> loadAccountsFromFile() {
+  final file = File('accounts.json');
+  if (!file.existsSync()) return {};
+
+  final content = file.readAsStringSync();
+  final jsonData = jsonDecode(content) as Map<String, dynamic>;
+
+  return jsonData.map((key, value) =>
+      MapEntry(key, BankingSystem.fromJson(value as Map<String, dynamic>)));
 }
