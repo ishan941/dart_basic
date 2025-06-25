@@ -6,21 +6,22 @@ class LibraryUser1 {
   List<String> borrowedBooks;
   LibraryUser1({this.username, this.password, List<String>? borrowedBooks})
       : borrowedBooks = borrowedBooks ?? [];
-      //
-      //
-      void borrowBook(List<String> availableBooks){
-        if(availableBooks.isEmpty){
-          print("Emplty");
-          return;
-        }
-        print("Available books");
-        for(int i =0 ; i < availableBooks.length; i++){
-          print("${i+1}. ${availableBooks[i]}");
-        }
-        stdout.write("Enter the number of the nook to borrow");
-        int? choose = int.parse(stdin.readLineSync()!);
-        
-      }
+  //
+  //
+  void borrowBook(List<String> availableBooks) {
+    if (availableBooks.isEmpty) {
+      print("Emplty");
+      return;
+    }
+    print("Available books");
+    for (int i = 0; i < availableBooks.length; i++) {
+      print("${i + 1}. ${availableBooks[i]}");
+    }
+    stdout.write("Enter the number of the nook to borrow");
+    int? choose = int.parse(stdin.readLineSync()!);
+
+    // if
+  }
 }
 
 void main() {
@@ -105,7 +106,7 @@ homePage(LibraryUser1 user, List<String> availableBooks) {
     print("5. Logout");
     stdout.write("Enter choice: ");
     String? input = stdin.readLineSync();
-     switch (input) {
+    switch (input) {
       case '1':
         print("\n📚 Available Books:");
         if (availableBooks.isEmpty) {
@@ -120,15 +121,16 @@ homePage(LibraryUser1 user, List<String> availableBooks) {
         user.borrowBook(availableBooks);
         break;
       case '3':
-        user.returnBook(availableBooks);
+        // user.returnBook(availableBooks);
         break;
       case '4':
-        user.viewBorrowedBooks();
+        // user.viewBorrowedBooks();
         break;
       case '5':
         print("👋 Logged out successfully.");
         return;
       default:
-        print(}
+      // print(}
+    }
   }
 }
