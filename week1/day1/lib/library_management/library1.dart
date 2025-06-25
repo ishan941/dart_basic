@@ -130,7 +130,7 @@ homePage(LibraryUser1 user, List<String> availableBooks) {
         print("👋 Logged out successfully.");
         return;
       default:
-      // print(}
+        print("");
     }
   }
 }
